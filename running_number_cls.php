@@ -26,8 +26,17 @@ class Running_number_cls{
 		$this->Format = $format;
 		$this->Status_format = $this->check_format();
 		$this->Length = strlen($input);
+		
 		$this->find_position_running();
 		$this->find_type_running();
+		
+		if($this->Length == 0){
+			$input_empty = $this->Format;
+			$input_empty = str_replace('{','',$input_empty);
+			$this->Output = str_replace('}','',$input_empty);
+			$this->Length = strlen($this->Output );
+		}
+		
 		for($i=0;$i<$this->Running_count;$i++)
 		{
 			$type = $this->Running[$i]['type'];
@@ -90,7 +99,7 @@ class Running_number_cls{
 	public function get_property()
 	{
 		$output['input'] = $this->Input;
-		$output['output'] = $this->Outpu;
+		$output['output'] = $this->Output;
 		$output['format'] = $this->Format;
 		$output['status_format'] = $this->Status_format;
 		$output['lenght'] = $this->Length;
